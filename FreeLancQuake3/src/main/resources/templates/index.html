@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">	
+	
+		<h1>Recent earth quakes in Iran</h1>
+
+<table class="table table-bordered table-hover table-striped">
+			<thead>
+				<tr>
+					<th>Seq</th>
+					<th>Date & Local time</th>
+					<th>Magnitude</th>
+					<th>Depth (km)</th>
+					<th>Region</th>
+					<th>Lat.</th>
+					<th>Long.</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="quake : ${quakes}">
+					<td th:text="${quake.id}">Id</td>
+					<td th:style="${quake.mag} > 3 ? 'color: red;' : 'color: black;' " th:text="${quake.date}">Date</td>
+					<td align="center" th:style="${quake.mag} > 3 ? 'color: red;' : 'color: black;' "  th:text="${quake.mag}">Mag</td>
+					<td align="center" th:text="${quake.dep}">Depth</td>
+					<td th:style="${quake.mag} > 3 ? 'color: red;' : 'color: black;' " th:text="${quake.reg1}"	>Region</td> 
+					<td th:text="${quake.lat}"	>Lat</td> 
+					<td th:text="${quake._long}">Long</td>  
+				</tr>
+			</tbody>
+</table>
+		
+		<div  align="center">
+			&copy; Persian Coder
+		</div>
+		
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+</div>
+</body>
+</html>
